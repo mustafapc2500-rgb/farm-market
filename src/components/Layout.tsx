@@ -1,14 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, NavLink, Outlet, useLocation } from "react-router-dom";
-import {
-  ArrowUpLeft,
-  Globe2,
-  Menu,
-  Sprout,
-  X,
-  Leaf,
-  Heart,
-} from "lucide-react";
+import { ArrowUpLeft, Globe2, Menu, Wheat, X, Heart } from "lucide-react";
 import { WhatsAppButton } from "./WhatsAppButton";
 import { t } from "../lib/i18n";
 export function Logo({ light = false }: { light?: boolean }) {
@@ -19,13 +11,41 @@ export function Logo({ light = false }: { light?: boolean }) {
       aria-label="فارم ماركت — الرئيسية"
     >
       <span className="logo-mark">
-        <Sprout size={30} strokeWidth={1.7} />
+        <svg
+          viewBox="0 0 64 64"
+          role="img"
+          aria-label="شارة فارم ماركت الأصلية"
+        >
+          <path
+            d="M7 34L32 12l25 22v23H7Z"
+            fill="#e6653f"
+            stroke="#7c3d24"
+            strokeWidth="2"
+          />
+          <path
+            d="M3 34L32 7l29 27-5 6L32 18 8 40Z"
+            fill="#ffdc72"
+            stroke="#9a652e"
+            strokeWidth="2"
+          />
+          <path d="M23 38h18v19H23Z" fill="#fff6d6" />
+          <path d="M26 42l12 13m0-13L26 55" stroke="#d76b42" strokeWidth="2" />
+          <path d="M26 25h12v9H26Z" fill="#fff0bb" />
+          <path d="M3 56q27-14 58 0v5H3Z" fill="#75bc42" />
+          <path
+            d="M10 54V39m0 8L4 41m6 2 6-7M53 54V36m0 10-7-6m7 0 5-7"
+            fill="none"
+            stroke="#f7c74d"
+            strokeWidth="3"
+            strokeLinecap="round"
+          />
+        </svg>
       </span>
       <span>
-        <b>
-          فارم ماركت<span className="logo-dot">.</span>
-        </b>
-        <small>FARM MARKET</small>
+        <b>فارم ماركت</b>
+        <small>
+          FARM <span>MARKET</span>
+        </small>
       </span>
     </Link>
   );
@@ -56,8 +76,8 @@ export function Layout() {
         انتقل إلى المحتوى
       </a>
       <div className="announcement">
-        <Leaf size={13} />
-        <span>أفكار تُزرع بحب، ومزارع تنبض بالجمال</span>
+        <Wheat size={16} />
+        <span>عالم من الأفكار الجميلة لمزرعتك</span>
         <span className="announcement-dot">✦</span>
         <span>خدمات رقمية بلمسة ريفية</span>
       </div>

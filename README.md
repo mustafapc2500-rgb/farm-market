@@ -34,14 +34,14 @@ Set `VITE_WHATSAPP_NUMBER` in `.env.local` to the owner's international phone nu
 ## Structure
 
 - `src/data/products.ts`: typed sample products, categories, and a repository adapter. Replace this data-access boundary with Supabase later.
-- `src/components/`: shared layout, product cards, WhatsApp behavior, and original farm SVG artwork.
+- `src/components/`: shared layout, product cards, WhatsApp behavior, and original farm artwork.
 - `src/pages/`: homepage, searchable catalog, product details, about, contact, legal placeholders, and not-found page.
 - `src/lib/i18n.ts`: locale metadata and shared text; centralize remaining page copy in locale dictionaries when implementing English and German. Current UI is Arabic only; no pretend language switcher.
 - `src/lib/whatsapp.ts`: independently testable message and number handling.
 - `src/styles.css`: Tailwind integration, palette, components, responsive layouts, and reduced-motion support.
 - `tests/storefront.spec.ts`: browser checks for catalog state, product navigation, configuration feedback, and mobile navigation.
 
-Category/search/sort state lives in URL parameters, so links can be shared and refreshed. Routes use BrowserRouter and support browser back/forward. Cairo is self-hosted from `@fontsource/cairo`; no external font requests. All illustrations and favicon are original vectors authored for this project. Cairo is SIL OFL licensed; Lucide is ISC licensed (see dependency licenses). No official game graphics, logos, or third-party product photos are used.
+Category/search/sort state lives in URL parameters, so links can be shared and refreshed. Routes use BrowserRouter and support browser back/forward. Cairo is self-hosted from `@fontsource/cairo`; no external font requests. The logo and favicon are original vectors. The landscape and six service scenes are original AI-generated illustrations created for this project and served locally as optimized WebP artwork; provenance and scene mapping are recorded in `public/artwork/README.md`. Cairo is SIL OFL licensed; Lucide is ISC licensed (see dependency licenses). No official game graphics, logos, or third-party product photos are used.
 
 ## Cloudflare Pages
 
@@ -61,7 +61,11 @@ npx playwright install chromium
 npm test
 ```
 
-Playwright starts Vite itself on port 4173. Tests use an unset WhatsApp number by default. Set `PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH` if you need a system Chromium. Tests include desktop and mobile viewports. There are no fabricated customer reviews or claims of completed orders.
+Playwright starts Vite itself on port 4173. Tests use an unset WhatsApp number by default. Set `PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH` if you need a system Chromium. Tests include 1440px desktop, 768px tablet, and 390px mobile viewports, artwork delivery checks, and reduced-motion behavior. There are no fabricated customer reviews or claims of completed orders.
+
+## Visual identity
+
+The storefront uses vibrant farm green, deep forest green, golden yellow, sky blue, warm cream, and orange accents. The homepage features an original detailed farm landscape, illustrated category tiles, and distinct service artwork. Buttons retain sufficient contrast while the scenery supplies the brighter colors. Cairo remains self-hosted, with larger type and responsive cards across desktop, tablet, and mobile. Routes, data, filtering, sorting, WhatsApp configuration, and the Cloudflare fallback retain their existing behavior.
 
 ## Next phase
 

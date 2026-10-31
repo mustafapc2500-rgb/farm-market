@@ -20,6 +20,14 @@ export default defineConfig({
       },
     },
     {
+      name: "tablet",
+      use: {
+        viewport: { width: 768, height: 1024 },
+        isMobile: true,
+        hasTouch: true,
+      },
+    },
+    {
       name: "mobile",
       use: { ...devices["iPhone 13"], defaultBrowserType: "chromium" },
     },

@@ -2,124 +2,104 @@ import {
   ArrowLeft,
   ArrowUpLeft,
   Check,
-  Compass,
   Flower2,
   Headphones,
   Leaf,
-  Map,
   MessagesSquare,
   MousePointer2,
   Palette,
   ShieldCheck,
   Sparkles,
   Sprout,
-  Sun,
   Tag,
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { categories, products } from "../data/products";
-import { FarmArt } from "../components/FarmArt";
+import { FarmArt, CategoryArt } from "../components/FarmArt";
 import { ProductCard } from "../components/ProductCard";
 import { WhatsAppButton } from "../components/WhatsAppButton";
-const icons = [Compass, Map, Sprout, Palette];
 export default function Home() {
   return (
     <>
       <section className="hero">
+        <div className="hero-sky" aria-hidden="true">
+          <span className="cloud cloud-one" />
+          <span className="cloud cloud-two" />
+          <span className="sunshine" />
+        </div>
         <div className="container hero-inner">
           <div className="hero-copy">
             <div className="eyebrow">
-              <span />
-              <Leaf size={14} />
-              من شغفك، تبدأ الحكاية
+              <Sprout size={17} /> أهلًا بك في عالم فارم ماركت{" "}
+              <span aria-hidden="true">✦</span>
             </div>
             <h1>
-              لمزرعتك حكاية
-              <br />
-              تستحق أن تكون{" "}
+              كل ما تحتاجه لمزرعتك{" "}
               <span>
-                أجمل
-                <svg viewBox="0 0 170 12" aria-hidden="true">
+                في مكان واحد
+                <svg viewBox="0 0 390 14" aria-hidden="true">
                   <path
-                    d="M3 8Q80-3 166 6"
+                    d="M5 10Q190-6 385 7"
                     fill="none"
                     stroke="currentColor"
-                    strokeWidth="5"
+                    strokeWidth="7"
                     strokeLinecap="round"
                   />
                 </svg>
               </span>
-              <span className="heading-flower" aria-hidden="true">
-                ✳
-              </span>
             </h1>
-            <p>
-              أفكار ملهمة، تصاميم مميزة، ولمسات تصنع الفرق.
-              <br className="desktop-break" /> نساعدك في تحويل مزرعتك الافتراضية
-              إلى عالم يشبهك.
-            </p>
+            <p>اكتشف خدمات وأفكارًا مميزة تجعل تجربة مزرعتك أجمل.</p>
             <div className="hero-buttons">
               <Link className="button primary" to="/products">
                 تصفح المنتجات
-                <ArrowLeft size={19} />
+                <ArrowLeft size={20} />
               </Link>
-              <Link className="button secondary" to="/contact">
-                تواصل معنا
-                <MessagesSquare size={18} />
-              </Link>
+              <WhatsAppButton className="hero-inquiry" />
             </div>
             <div className="hero-notes">
               <span>
-                <Check size={14} />
-                تصاميم حسب ذوقك
+                <Check size={16} />
+                خدمات تناسب أفكارك
               </span>
               <span>
-                <Check size={14} />
-                أسعار واضحة
-              </span>
-              <span>
-                <Check size={14} />
+                <Check size={16} />
                 تواصل مباشر
+              </span>
+              <span>
+                <Check size={16} />
+                أسعار واضحة
               </span>
             </div>
           </div>
           <div className="hero-picture">
-            <div className="art-orbit" />
-            <div className="floating-label top-label">
-              <span className="label-icon">
-                <Sprout size={23} />
-              </span>
-              <span>
-                <b>فكرة صغيرة</b>
-                <small>مزرعة استثنائية</small>
-              </span>
-              <Sparkles size={17} />
-            </div>
             <FarmArt hero />
-            <div className="floating-label bottom-label">
-              <span className="sun-icon">
-                <Sun size={21} />
-              </span>
+            <div className="world-sticker">
               <span>
-                <b>هنا تنمو أفكارك</b>
-                <small>تفاصيل مصممة بحب</small>
+                <Leaf size={21} />
               </span>
-              <span className="little-leaf">❧</span>
+              <div>
+                <b>عالم صغير، خيال كبير</b>
+                <small>لمزرعتك لمسة تستحقها</small>
+              </div>
+              <Sparkles size={20} />
             </div>
-            <div className="art-caption">
-              A LITTLE FARM. A LOT OF POSSIBILITIES.
-            </div>
+            <span className="world-tag" aria-hidden="true">
+              ازرع فكرتك <Sprout size={18} />
+            </span>
           </div>
         </div>
         <div className="hero-bottom">
-          <span>خيالك هو البداية، ونحن نهتم بالتفاصيل</span>
           <span>
-            <Flower2 size={17} />
-            زرعنا الشغف في كل خدمة
+            <Flower2 size={20} />
+            تفاصيل صغيرة تصنع عالمًا أجمل
           </span>
           <span>
-            <MousePointer2 size={16} />
-            اختر، استفسر، ودعنا نبدأ
+            <MessagesSquare size={20} />
+            اختر خدمتك وتحدث معنا
+          </span>
+          <span>
+            <MousePointer2 size={20} />
+            خدمات رقمية · بدون دفع إلكتروني
           </span>
         </div>
       </section>
@@ -136,18 +116,17 @@ export default function Home() {
             <p>لكل فكرة مكان، ولكل مزرعة لمستها الخاصة.</p>
           </div>
           <div className="category-grid">
-            {categories.map((c, i) => {
-              const Icon = icons[i];
+            {categories.map((c) => {
               return (
                 <Link
                   key={c.id}
                   to={`/products?category=${c.id}`}
                   className={`category-card ${c.color}`}
                 >
-                  <div className="category-icon">
-                    <Icon size={30} strokeWidth={1.5} />
-                    <span>✦</span>
-                  </div>
+                  <CategoryArt category={c.id} />
+                  <span className="category-spark" aria-hidden="true">
+                    ✦
+                  </span>
                   <div>
                     <h3>{c.title}</h3>
                     <p>{c.description}</p>
@@ -168,7 +147,7 @@ export default function Home() {
                 مختارة بعناية
               </span>
               <h2>
-                أفكار تحبها، ومزرعة تتمناها <Sparkles size={24} />
+                لمسات مميزة لعالمك <Sparkles size={24} />
               </h2>
             </div>
             <Link to="/products" className="text-link">
@@ -177,7 +156,8 @@ export default function Home() {
             </Link>
           </div>
           <p className="demo-note">
-            مجموعة تجريبية للتعريف بخدماتنا — الأسعار والتوفر أمثلة توضيحية.
+            <Leaf size={15} /> منتجات تجريبية لاستكشاف الخدمات — الأسعار والتوفر
+            أمثلة توضيحية.
           </p>
           <div className="product-grid">
             {products
@@ -196,8 +176,7 @@ export default function Home() {
               أكثر من مجرد تصميم
             </span>
             <h2>
-              نهتم بالتفاصيل الصغيرة،
-              <br />
+              نهتم بالتفاصيل الصغيرة، <br />
               لتستمتع بالصورة الكبيرة.
             </h2>
             <p>

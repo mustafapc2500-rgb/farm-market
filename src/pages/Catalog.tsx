@@ -2,6 +2,7 @@ import { Search, SlidersHorizontal, X, Leaf, ArrowLeft } from "lucide-react";
 import { useSearchParams, Link } from "react-router-dom";
 import { categories, productRepository } from "../data/products";
 import { ProductCard } from "../components/ProductCard";
+import { FarmArt } from "../components/FarmArt";
 export default function Catalog() {
   const [params, setParams] = useSearchParams();
   const category = params.get("category") || "";
@@ -55,7 +56,9 @@ export default function Catalog() {
             اكتشف خدمات التصميم والتخطيط والإرشاد. اختر ما يلهمك، ودعنا نهتم
             بالباقي.
           </p>
-          <span className="banner-flower">✳</span>
+          <div className="banner-art" aria-hidden="true">
+            <FarmArt variant="plan" />
+          </div>
         </div>
       </section>
       <section className="section catalog-section">

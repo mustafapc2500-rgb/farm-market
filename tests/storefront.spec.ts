@@ -10,13 +10,13 @@ test("WhatsApp validation and product message", () => {
 });
 test("homepage navigation, RTL, original art, and mobile menu", async ({
   page,
-}, testInfo) => {
+}) => {
   const errors: string[] = [];
   page.on("pageerror", (e) => errors.push(e.message));
   await page.goto("/");
   await expect(page.locator("html")).toHaveAttribute("dir", "rtl");
   await expect(page.getByRole("heading", { level: 1 })).toContainText(
-    "لمزرعتك حكاية",
+    "كل ما تحتاجه لمزرعتك",
   );
   const headingBox = await page.locator("h1").boundingBox();
   expect(headingBox!.x).toBeGreaterThanOrEqual(0);
@@ -25,7 +25,7 @@ test("homepage navigation, RTL, original art, and mobile menu", async ({
   );
   await expect(page.locator(".hero-art")).toBeVisible();
   await expect(page.locator(".product-card")).toHaveCount(4);
-  if (testInfo.project.name === "mobile") {
+  if (await page.getByRole("button", { name: "فتح القائمة" }).isVisible()) {
     await page.getByRole("button", { name: "فتح القائمة" }).click();
     await page
       .locator("#mobile-nav")
@@ -156,5 +156,18 @@ test("small phone and tablet layouts contain content and notices", async ({
     await expect(
       page.locator(".product-card").first().getByRole("status"),
     ).toBeVisible();
+    for (const index of [0, 1]) {
+      const card = page.locator(".product-card").nth(index);
+      if (index === 1)
+        await card.getByRole("button", { name: "استفسر", exact: true }).click();
+      const notice = await card.getByRole("status").boundingBox();
+      expect(notice!.x, `notice left edge at ${width}`).toBeGreaterThanOrEqual(
+        0,
+      );
+      expect(
+        notice!.x + notice!.width,
+        `notice right edge at ${width}`,
+      ).toBeLessThanOrEqual(width);
+    }
   }
 });

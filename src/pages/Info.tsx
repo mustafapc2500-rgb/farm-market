@@ -5,7 +5,7 @@ import { FarmArt } from "../components/FarmArt";
 import { whatsappUrl } from "../lib/whatsapp";
 export function About() {
   return (
-    <div className="container info-page">
+    <div className="container info-page about-page">
       <div className="eyebrow">
         <Leaf size={16} />
         جذورنا شغف، وحصادنا إبداع
@@ -71,6 +71,9 @@ export function Contact() {
       </p>
       <div className="contact-grid">
         <div className="contact-panel">
+          <div className="contact-art" aria-hidden="true">
+            <FarmArt variant="orchard" />
+          </div>
           <span className="contact-icon">
             <MessageCircle size={34} />
           </span>
