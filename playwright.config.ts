@@ -35,7 +35,11 @@ export default defineConfig({
   webServer: {
     command: "npm run dev -- --port 4173 --strictPort",
     url: "http://127.0.0.1:4173",
-    reuseExistingServer: !process.env.CI,
-    env: { VITE_WHATSAPP_NUMBER: "" },
+    reuseExistingServer: false,
+    env: {
+      VITE_WHATSAPP_NUMBER: "",
+      VITE_SUPABASE_URL: "https://farm-market-tests.supabase.co",
+      VITE_SUPABASE_PUBLISHABLE_KEY: "sb_publishable_test_only_not_a_real_key",
+    },
   },
 });
