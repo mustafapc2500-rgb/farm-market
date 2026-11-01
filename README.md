@@ -1,6 +1,6 @@
 # Farm Market — فارم ماركت
 
-An Arabic, RTL-first storefront for digital farm design, layout consultations, and educational coaching. Built with React, TypeScript, Vite, Tailwind CSS 4 and Lucide React. This is a frontend demo: all products, availability, and EUR prices are explicitly sample data. No payments, authentication, database, or admin dashboard are implemented.
+An Arabic, RTL-first storefront for digital farm design, layout consultations, and educational coaching. Built with React, TypeScript, Vite, Tailwind CSS 4 and Lucide React. This is a frontend demo: all products, availability, and EUR prices are explicitly sample data. The public storefront remains on sample data. A separate Supabase-authenticated, read-only admin foundation is available under `/admin`; it requires public environment configuration and the reviewed admin-status RPC. No payments or product CRUD are implemented.
 
 ## Local development
 
@@ -67,11 +67,15 @@ Playwright starts Vite itself on port 4173. Tests use an unset WhatsApp number b
 
 The storefront uses vibrant farm green, deep forest green, golden yellow, sky blue, warm cream, and orange accents. The homepage features an original detailed farm landscape, illustrated category tiles, and distinct service artwork. Buttons retain sufficient contrast while the scenery supplies the brighter colors. Cairo remains self-hosted, with larger type and responsive cards across desktop, tablet, and mobile. Routes, data, filtering, sorting, WhatsApp configuration, and the Cloudflare fallback retain their existing behavior.
 
+## Read-only administration
+
+See [Admin dashboard setup and security](docs/admin-dashboard.md) for `/admin/login`, `/admin`, the two public Supabase variables, the **new** reviewed admin-status RPC migration, session behavior, and hosted acceptance checks. The original database foundation is already applied according to the owner; do not reapply it. No migration or deployment is automated.
+
 ## Next phase
 
 1. Agree on real services, imagery, prices, delivery terms, and owner information.
 2. Finalize privacy, terms, legal imprint, and service-specific consumer requirements with the owner.
-3. Add Supabase data access behind the product repository, storage, and secure server-side authorization/RLS.
-4. Build a real authenticated admin dashboard with product/category management and validated uploads; never expose service-role keys in this frontend.
+3. After approval, connect public catalog reads behind the product repository; the current public samples remain unchanged.
+4. Extend the authenticated read-only admin foundation with authorized product/category mutations, validated uploads, and MFA; never expose service-role keys in this frontend.
 5. Add full English/German translations and locale-aware routing; expand keyboard/screen-reader and browser testing.
 6. Configure the owner's WhatsApp number and deploy to Cloudflare Pages after review.

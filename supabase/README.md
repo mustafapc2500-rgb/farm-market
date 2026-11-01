@@ -1,6 +1,6 @@
 # Farm Market: database foundation — review before applying
 
-Status: **SQL prepared, not applied to `farm-market-dev`**. No Supabase SDK, environment variables, dashboard UI, API calls, or database connection were added to the application. The colorful storefront, routes, sample products, and WhatsApp environment configuration remain unchanged. No credentials are required to review or run the local security tests.
+Status: **the owner reports this foundation is already applied to `farm-market-dev`, with a confirmed, manually authorized administrator**. Do not reapply `20261101000100_catalog_foundation.sql` there. The original setup steps below are retained as the foundation reference for a new, empty project. For the current read-only admin feature and its separate reviewed status-RPC migration, see [admin dashboard setup](../docs/admin-dashboard.md). The public storefront still uses sample data. No credentials are required to review or run local SQL security tests.
 
 ## Current application and mapping for a later phase
 
